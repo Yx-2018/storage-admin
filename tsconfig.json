@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext" /* 使用最新的es语法 */,
+    "module": "esnext" /* 设置模块系统为es模块 */,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"] /* 编译过程需要引入的库文件，比如document对象的定义 */,
+    "jsx": "preserve" /* 不对 JSX 进行改变并生成 .jsx 文件 */,
+    "strict": true /* 启用严格类型检查 */,
+    "moduleResolution": "node" /* 模块引入位置通过node方式解析 */,
+    "baseUrl": "." /* 解析非相对模块名的基准目录 */,
+    "paths": {
+      "/@/*": ["src/*"]
+    } /* 路径映射 */,
+    "types": ["vite/client"] /* 自动引入./node_modules/@types/vite/client包 */,
+    "allowSyntheticDefaultImports": true /* 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。 */,
+    "esModuleInterop": true /* 开启 esModuleInterop 选项将会修复 TypeScript 转译中缺陷 */,
+
+    /* Experimental Options */
+    "experimentalDecorators": true /* 启用装饰器 */,
+
+    /* Advanced Options */
+    "skipLibCheck": true /* 忽略所有的声明文件（ *.d.ts）的类型检查。 */,
+    "forceConsistentCasingInFileNames": true /* 禁止对同一个文件的不一致的引用 */
+  }
+}
