@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import { loadEnv } from '/@/utils/viteBuild';
-import ElementPlugins from '/@/plugins/elementUI';
 import MockPlugin from '/@/plugins/mock';
 
 const pathResolve = (dir: string): any => {
@@ -16,7 +15,15 @@ const alias: Record<string, string> = {
 };
 
 export default defineConfig({
-	plugins: [vue(), ...ElementPlugins, MockPlugin],
+	plugins: [vue(), MockPlugin],
+	css: {
+		// 解决element-plus打包时卡住问题
+		preprocessorOptions: {
+			scss: {
+				charset: false,
+			},
+		},
+	},
 	root: process.cwd(),
 	resolve: { alias },
 	base: process.env.NODE_ENV === 'production' ? VITE_PUBLIC_PATH : './',
