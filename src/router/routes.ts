@@ -1,23 +1,26 @@
 import { RouteRecordRaw } from 'vue-router';
 
-// export const dynamicRoutes: RouteRecordRaw[] = [
-// 	{
-// 		path: '/',
-// 		name: '/',
-// 		redirect: 'home',
-// 		component: () => import('/@/layout/index.vue'),
-// 		children: [
-// 			{
-// 				path: 'home',
-// 				name: 'home',
-// 				meta: {
-// 					title: '首页',
-// 				},
-// 				component: () => import('/@/views/home/index.vue'),
-// 			},
-// 		],
-// 	},
-// ];
+/**
+ * 上传后端做权限使用
+ */
+export const dynamicRoutes: RouteRecordRaw[] = [
+	{
+		path: '/',
+		name: '/',
+		redirect: 'home',
+		component: () => import('/@/layout/index.vue'),
+		children: [
+			{
+				path: 'home',
+				name: 'home',
+				meta: {
+					title: '首页',
+				},
+				component: () => import('/@/views/home/index.vue'),
+			},
+		],
+	},
+];
 
 export const commonRoutes: RouteRecordRaw[] = [
 	{
@@ -30,8 +33,9 @@ export const commonRoutes: RouteRecordRaw[] = [
 		name: '404',
 		component: () => import('/@/views/error/404.vue'),
 	},
-	{
-		path: '/:pathMatch(.*)*',
-		redirect: '/404',
-	},
 ];
+
+export const otherRouter: RouteRecordRaw = {
+	path: '/:pathMatch(.*)*',
+	redirect: '/404',
+};

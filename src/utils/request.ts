@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { Session } from '/@/utils/storage';
+import { Local } from '/@/utils/storage';
+import { STORAGE_ADMIN_TOKEN } from '/@/config';
 
 export interface Result<T> {
 	code: number;
-	message: string;
+	message?: string;
 	data?: T;
 }
 
@@ -19,8 +20,8 @@ const service = axios.create({
 service.interceptors.request.use(
 	(config: any) => {
 		// 在发送请求之前做些什么 token
-		if (Session.get('token')) {
-			config.headers.common['Authorization'] = `${Session.get('token')}`;
+		if (Local.get(STORAGE_ADMIN_TOKEN)) {
+			config.headers.common['Authorization'] = `${Local.get(STORAGE_ADMIN_TOKEN)}`;
 		}
 		// 请求前缀
 		config.url = import.meta.env.VITE_API_ROOT + config.url;
@@ -41,7 +42,7 @@ service.interceptors.response.use(
 			return response.data;
 		}
 		if (res.code === 4001) {
-			Session.clear(); // 清除浏览器全部临时缓存
+			Local.clear(); // 清除浏览器全部临时缓存
 			window.location.href = '/'; // 去登录页
 			ElMessageBox.alert('你已被登出，请重新登录', '提示', {})
 				.then(() => {})

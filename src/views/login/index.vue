@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div class="login-content-main-sacn" @click="isScan = !isScan">
-					<i class="iconfont" :class="isScan ? 'icon-diannao1' : 'icon-barcode-qr'"></i>
+					<i class="iconfont" :class="isScan ? 'icon-diannao' : 'icon-barcode-qr'"></i>
 					<div class="login-content-main-sacn-delta"></div>
 				</div>
 			</div>
@@ -40,7 +40,7 @@ export default {
 	components: {
 		Account,
 	},
-	data() {
+	setup() {
 		return {
 			SYSTEM_NAME,
 			COPYRIGHT_HOLDER,

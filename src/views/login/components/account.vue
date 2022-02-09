@@ -1,31 +1,31 @@
 <template>
-	<el-form class="login-content-form">
-		<el-form-item>
-			<el-input type="text" placeholder="用户名 admin 或不输均为 test" v-model="ruleForm.userName" clearable autocomplete="off">
+	<el-form ref="formRef" :model="form" class="login-content-form" :rules="rules" @submit.native.prevent>
+		<el-form-item prop="userName">
+			<el-input type="text" placeholder="用户名 admin 或不输均为 test" v-model="form.userName" clearable autocomplete="off">
 				<template #prefix>
 					<el-icon class="el-input__icon"><ElIconUser /></el-icon>
 				</template>
 			</el-input>
 		</el-form-item>
-		<el-form-item>
-			<el-input :type="isShowPassword ? 'text' : 'password'" placeholder="密码：123456" v-model="ruleForm.password" autocomplete="off">
+		<el-form-item prop="password">
+			<el-input :type="isShowPassword ? 'text' : 'password'" placeholder="密码：123456" v-model="form.password" autocomplete="off">
 				<template #prefix>
 					<el-icon class="el-input__icon"><ElIconUnlock /></el-icon>
 				</template>
 				<template #suffix>
 					<i
 						class="iconfont el-input__icon login-content-password"
-						:class="isShowPassword ? 'icon-yincangmima' : 'icon-xianshimima'"
+						:class="isShowPassword ? 'icon-yincang' : 'icon-xianshi'"
 						@click="isShowPassword = !isShowPassword"
 					>
 					</i>
 				</template>
 			</el-input>
 		</el-form-item>
-		<el-form-item>
+		<el-form-item prop="code">
 			<el-row :gutter="15">
 				<el-col :span="16">
-					<el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="ruleForm.code" clearable autocomplete="off">
+					<el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="form.code" clearable autocomplete="off">
 						<template #prefix>
 							<el-icon class="el-input__icon"><ElIconPosition /></el-icon>
 						</template>
@@ -39,31 +39,66 @@
 			</el-row>
 		</el-form-item>
 		<el-form-item>
-			<el-button type="primary" class="login-content-submit" round @click="onSignIn" :loading="signIn">
+			<el-button type="primary" native-type="submit" class="login-content-submit" round @click="onSignIn" :loading="signIn">
 				<span>登 录</span>
 			</el-button>
 		</el-form-item>
 	</el-form>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { ref, reactive, toRefs, defineComponent } from 'vue';
+import { login } from '/@/api/login';
+import { STORAGE_ADMIN_TOKEN } from '/@/config';
+import { Local } from '/@/utils/storage';
+import { useStore } from '/@/store';
+import { useRouter } from 'vue-router';
+export default defineComponent({
 	name: 'account',
-	data() {
-		return {
-			ruleForm: {
-				userName: undefined,
-				password: undefined,
-				code: undefined,
+	setup() {
+		const formRef = ref();
+		const store = useStore();
+		const router = useRouter();
+
+		const state = reactive({
+			form: {
+				userName: '',
+				password: '',
+				code: '',
+			},
+			rules: {
+				userName: [{ required: true, message: '请输入用户名', trigger: ['blur', 'change'] }],
+				password: [{ required: true, message: '请输入密码', trigger: ['blur', 'change'] }],
+				code: [{ required: true, message: '请输入验证码', trigger: ['blur', 'change'] }],
 			},
 			isShowPassword: false,
 			signIn: false,
+		});
+
+		const onSignIn = () => {
+			formRef.value.validate(async (valid: boolean) => {
+				if (!valid) {
+					return;
+				}
+				state.signIn = true;
+				try {
+					const { data } = await login(state.form);
+					Local.set(STORAGE_ADMIN_TOKEN, data.token);
+					await store.dispatch('userInfoModule/setUserInfo', data.userInfo);
+					await router.push('/');
+				} finally {
+					state.signIn = false;
+				}
+			});
+		};
+
+		return {
+			formRef,
+			...toRefs(state),
+			onSignIn,
 		};
 	},
-	methods: {
-		onSignIn() {},
-	},
-};
+});
 </script>
 
 <style scoped lang="scss">
