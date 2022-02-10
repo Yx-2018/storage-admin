@@ -1,7 +1,7 @@
 <template>
 	<el-form ref="formRef" :model="form" class="login-content-form" :rules="rules" @submit.native.prevent>
 		<el-form-item prop="userName">
-			<el-input type="text" placeholder="用户名 admin 或不输均为 test" v-model="form.userName" clearable autocomplete="off">
+			<el-input type="text" placeholder="用户名 admin" v-model="form.userName" clearable autocomplete="off">
 				<template #prefix>
 					<el-icon class="el-input__icon"><ElIconUser /></el-icon>
 				</template>
@@ -62,9 +62,9 @@ export default defineComponent({
 
 		const state = reactive({
 			form: {
-				userName: '',
-				password: '',
-				code: '',
+				userName: 'admin',
+				password: '123456',
+				code: '1234',
 			},
 			rules: {
 				userName: [{ required: true, message: '请输入用户名', trigger: ['blur', 'change'] }],

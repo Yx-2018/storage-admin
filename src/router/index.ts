@@ -10,15 +10,15 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+	// 不需要登陆页面直接跳过
+	if (commonRoutes.find((p) => p.path === to.path)) {
+		next();
+		return;
+	}
 	const token = Local.get(STORAGE_ADMIN_TOKEN);
 	// token不存在去登陆
 	if (!token) {
 		next('/login');
-		return;
-	}
-	// 不需要登陆页面直接跳过
-	if (commonRoutes.find((p) => p.path === to.path)) {
-		next();
 		return;
 	}
 	// 组装路由
