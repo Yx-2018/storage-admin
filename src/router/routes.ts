@@ -7,7 +7,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
 	{
 		path: '/',
 		name: '/',
-		redirect: 'home',
+		redirect: '/home',
 		component: () => import('/@/layout/index.vue'),
 		children: [
 			{
@@ -15,6 +15,15 @@ export const dynamicRoutes: RouteRecordRaw[] = [
 				name: 'home',
 				meta: {
 					title: '首页',
+					icon: 'icon-home',
+				},
+				component: () => import('/@/views/home/index.vue'),
+			},
+			{
+				path: '/care',
+				name: 'care',
+				meta: {
+					title: '人员',
 					icon: 'icon-home',
 				},
 				component: () => import('/@/views/home/index.vue'),

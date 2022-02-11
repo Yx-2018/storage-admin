@@ -1,5 +1,5 @@
 <template>
-	<el-aside class="aside">
+	<el-aside class="layout-aside">
 		<el-scrollbar>
 			<Menu :menus="menus" />
 		</el-scrollbar>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.aside {
+.layout-aside {
 	width: 220px;
 	background: var(--bg-aside);
 	overflow-x: hidden;

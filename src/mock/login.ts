@@ -53,6 +53,14 @@ export default [
 									title: '首页',
 								},
 							},
+							{
+								path: '/care',
+								name: 'care',
+								meta: {
+									title: '人员',
+									icon: 'icon-home',
+								},
+							},
 						],
 					},
 				],
