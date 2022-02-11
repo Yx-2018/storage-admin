@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { RouteLocationMatched, useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
