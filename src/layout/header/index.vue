@@ -1,10 +1,8 @@
-<template>
-	<div>111</div>
-</template>
+<template></template>
 
 <script>
 export default {
-	name: 'Home',
+	name: 'Header',
 };
 </script>
 

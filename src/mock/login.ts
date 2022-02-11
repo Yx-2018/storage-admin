@@ -47,7 +47,7 @@ export default [
 						redirect: 'home',
 						children: [
 							{
-								path: 'home',
+								path: '/home',
 								name: 'home',
 								meta: {
 									title: '首页',

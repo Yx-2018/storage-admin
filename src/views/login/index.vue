@@ -36,7 +36,7 @@
 import { COPYRIGHT_HOLDER, PUBLISH_NUMBER, SYSTEM_NAME } from '/@/config';
 import Account from './components/account.vue';
 export default {
-	name: 'login',
+	name: 'Login',
 	components: {
 		Account,
 	},

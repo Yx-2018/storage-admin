@@ -45,6 +45,7 @@ module.exports = {
 		'vue/no-parsing-error': 'off',
 		'vue/no-deprecated-v-on-native-modifier': 'off',
 		'vue/multi-word-component-names': 'off',
+		'vue/component-definition-name-casing': ['error', 'PascalCase'],
 		'no-useless-escape': 'off',
 		'no-sparse-arrays': 'off',
 		'no-prototype-builtins': 'off',

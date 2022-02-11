@@ -11,10 +11,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
 		component: () => import('/@/layout/index.vue'),
 		children: [
 			{
-				path: 'home',
+				path: '/home',
 				name: 'home',
 				meta: {
 					title: '首页',
+					icon: 'icon-home',
 				},
 				component: () => import('/@/views/home/index.vue'),
 			},

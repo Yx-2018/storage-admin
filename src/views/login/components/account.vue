@@ -54,7 +54,7 @@ import { Local } from '/@/utils/storage';
 import { useStore } from '/@/store';
 import { useRouter } from 'vue-router';
 export default defineComponent({
-	name: 'account',
+	name: 'Account',
 	setup() {
 		const formRef = ref();
 		const store = useStore();

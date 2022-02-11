@@ -47,6 +47,10 @@ const userInfoModule: Module<UserInfoState, RootState> = {
 			return state.permissionMenus;
 		},
 		GET_MENUS(state) {
+			// 过滤顶级/路由，其他路由充当菜单
+			if (state.menus && state.menus.length) {
+				return state.menus[0].children;
+			}
 			return state.menus;
 		},
 	},

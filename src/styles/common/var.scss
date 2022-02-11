@@ -66,6 +66,8 @@ $--color-border-light: #E4E7ED !default;
 $--color-border-lighter: #EBEEF5 !default;
 $--color-border-extra-light: #F2F6FC !default;
 
+$--bg-aside: #545c64;
+
 /* 赋值给:root
 ------------------------------- */
 :root {
@@ -128,5 +130,11 @@ $--color-border-extra-light: #F2F6FC !default;
   --color-border-light: #{$--color-border-light};
   --color-border-lighter: #{$--color-border-lighter};
   --color-border-extra-light: #{$--color-border-extra-light};
+  --bg-aside: #{$--bg-aside};
 }
 
+/* 导出变量 (vite已不支持该方式) */
+//:export {
+//  primary: $--color-primary;
+//  textSecondary: $--color-text-secondary;
+//}

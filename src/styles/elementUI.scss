@@ -1,0 +1,19 @@
+/* -----Menu样式调整------start */
+.el-menu {
+  border-right: none !important;
+  width: 220px;
+}
+// 设置左侧菜单文案颜色
+.el-menu-item,
+.el-sub-menu__title {
+  height: 50px !important;
+  line-height: 50px !important;
+  color: var(--color-whites);
+  transition: none !important;
+}
+
+// 高亮菜单颜色
+.el-menu-item.is-active {
+  color: var(--color-primary);
+}
+/* -----Menu样式调整------end */

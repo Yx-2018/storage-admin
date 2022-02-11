@@ -1,6 +1,6 @@
 <template>
-	<el-container>
-		<el-aside width="200px">Aside</el-aside>
+	<el-container class="layout">
+		<Aside />
 		<el-container>
 			<el-header>Header</el-header>
 			<el-main>
@@ -11,10 +11,20 @@
 	</el-container>
 </template>
 
-<script>
+<script lang="ts">
+import Aside from './aside/index.vue';
 export default {
 	name: 'Layout',
+	components: {
+		Aside,
+	},
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.layout {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
