@@ -44,7 +44,7 @@ export default defineComponent({
 		const isCollapse = computed(() => store.getters['layoutModule/GET_IS_COLLAPSE']);
 
 		const handleBreadcrumbClick = ({ redirect, path }: any) => {
-			if (redirect) router.replace(redirect);
+			if (redirect) router.push(redirect);
 			else router.push(path);
 		};
 
