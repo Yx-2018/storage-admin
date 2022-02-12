@@ -1,5 +1,5 @@
 <template>
-	<el-aside class="layout-aside">
+	<el-aside class="layout-aside" :class="{ 'layout-aside-is-collapse': isCollapse }">
 		<el-scrollbar>
 			<Menu :menus="menus" />
 		</el-scrollbar>
@@ -18,11 +18,14 @@ export default {
 	setup() {
 		const store = useStore();
 
+		const isCollapse = computed(() => store.getters['layoutModule/GET_IS_COLLAPSE']);
+
 		// 获取菜单信息
 		const menus = computed(() => store.getters['userInfoModule/GET_MENUS']);
 
 		return {
 			menus,
+			isCollapse,
 		};
 	},
 };
@@ -33,5 +36,9 @@ export default {
 	width: 220px;
 	background: var(--bg-aside);
 	overflow-x: hidden;
+	transition: width 0.3s ease;
+}
+.layout-aside-is-collapse {
+	width: 64px;
 }
 </style>

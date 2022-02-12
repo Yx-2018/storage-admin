@@ -1,6 +1,9 @@
 <template>
 	<div class="layout-breadcrumb">
-		<el-icon class="layout-breadcrumb-icon"><ElIconFold /></el-icon>
+		<el-icon class="layout-breadcrumb-icon" @click="handleIconClick">
+			<ElIconFold v-if="isCollapse" />
+			<ElIconExpand v-else />
+		</el-icon>
 		<el-breadcrumb>
 			<transition-group name="breadcrumb" mode="out-in">
 				<el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.path">
@@ -15,12 +18,15 @@
 <script lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import { computed, defineComponent } from 'vue';
+import { useStore } from '/@/store';
 
 export default defineComponent({
 	name: 'Breadcrumb',
 	setup() {
 		const route = useRoute();
 		const router = useRouter();
+		const store = useStore();
+
 		const breadcrumbList = computed(() => {
 			return route.matched.map((p) => {
 				if (p.path === '/') {
@@ -35,12 +41,18 @@ export default defineComponent({
 			});
 		});
 
+		const isCollapse = computed(() => store.getters['layoutModule/GET_IS_COLLAPSE']);
+
 		const handleBreadcrumbClick = ({ redirect, path }: any) => {
 			if (redirect) router.replace(redirect);
 			else router.push(path);
 		};
 
-		return { breadcrumbList, handleBreadcrumbClick };
+		const handleIconClick = () => {
+			store.dispatch('layoutModule/changeIsCollapse');
+		};
+
+		return { breadcrumbList, isCollapse, handleBreadcrumbClick, handleIconClick };
 	},
 });
 </script>

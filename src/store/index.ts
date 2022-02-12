@@ -1,6 +1,7 @@
 import { InjectionKey } from 'vue';
 import { createStore, useStore as defaultUseStore, Store } from 'vuex';
 import userInfoModule from '/@/store/modules/userInfo';
+import layoutModule from '/@/store/modules/layout';
 import { RootState } from './interface';
 
 export const key: InjectionKey<Store<RootState>> = Symbol();
@@ -10,6 +11,7 @@ export const store = createStore<RootState>({
 	strict: true,
 	modules: {
 		userInfoModule,
+		layoutModule,
 	},
 });
 
