@@ -9,6 +9,7 @@ const userInfoModule: Module<UserInfoState, RootState> = {
 	state: {
 		userInfo: {
 			name: '',
+			photo: '',
 		},
 		permissionMenus: [],
 		menus: [],
@@ -43,6 +44,9 @@ const userInfoModule: Module<UserInfoState, RootState> = {
 	},
 
 	getters: {
+		GET_USER_INFO(state) {
+			return state.userInfo;
+		},
 		GET_PERMISSION_MENUS(state) {
 			return state.permissionMenus;
 		},

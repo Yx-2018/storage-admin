@@ -20,8 +20,8 @@ export default [
 					message: 'success',
 					data: {
 						userInfo: {
-							userName: 'admin',
-							photo: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1813762643,1914315241&fm=26&gp=0.jpg',
+							name: 'admin',
+							photo: 'https://avatars.githubusercontent.com/u/35365624?v=4',
 						},
 						token: new Date().getTime(),
 					},

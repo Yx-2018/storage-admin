@@ -21,6 +21,10 @@ router.beforeEach(async (to, from, next) => {
 		next('/login');
 		return;
 	}
+
+	// 设置用户信息
+	store.dispatch('userInfoModule/setUserInfo');
+
 	// 组装路由
 	if (!store.getters['userInfoModule/GET_MENUS'].length) {
 		await setPermissionRoutes();
