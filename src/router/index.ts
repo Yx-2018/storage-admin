@@ -4,12 +4,17 @@ import { Local } from '/@/utils/storage';
 import { STORAGE_ADMIN_TOKEN } from '/@/config';
 import { setPermissionRoutes } from '/@/router/permission';
 import { store } from '/@/store';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+
 const router = createRouter({
 	history: createWebHistory(),
 	routes: commonRoutes,
 });
 
 router.beforeEach(async (to, from, next) => {
+	NProgress.configure({ showSpinner: false });
+	NProgress.start();
 	// 不需要登陆页面直接跳过
 	if (commonRoutes.find((p) => p.path === to.path)) {
 		next();
@@ -33,6 +38,10 @@ router.beforeEach(async (to, from, next) => {
 	} else {
 		next();
 	}
+});
+
+router.afterEach(() => {
+	NProgress.done();
 });
 
 export default router;
