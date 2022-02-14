@@ -4,7 +4,7 @@
 		<el-container class="layout-content">
 			<Header />
 			<el-main class="layout-content-main">
-				<el-scrollbar>
+				<el-scrollbar class="pd15">
 					<router-view></router-view>
 					<Footer />
 				</el-scrollbar>

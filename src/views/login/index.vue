@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div class="login-content-main-sacn" @click="isScan = !isScan">
-					<i class="iconfont" :class="isScan ? 'icon-diannao' : 'icon-barcode-qr'"></i>
+					<SvgIcon :icon="isScan ? 'icon-diannao' : 'icon-barcode-qr'" />
 					<div class="login-content-main-sacn-delta"></div>
 				</div>
 			</div>
@@ -35,10 +35,13 @@
 <script lang="ts">
 import { COPYRIGHT_HOLDER, PUBLISH_NUMBER, SYSTEM_NAME } from '/@/config';
 import Account from './components/account.vue';
+import SvgIcon from '/@/components/svgIcon/index.vue';
+
 export default {
 	name: 'Login',
 	components: {
 		Account,
+		SvgIcon,
 	},
 	setup() {
 		return {

@@ -2,13 +2,13 @@
 	<template v-for="item in menus">
 		<el-sub-menu v-if="item.children && item.children.length" :key="item.path" :index="item.path">
 			<template #title>
-				<i v-if="item.meta.icon" class="iconfont menu-icon" :class="[item.meta.icon]"></i>
+				<SvgIcon v-if="item.meta.icon" :icon="item.meta.icon" class="menu-icon" />
 				<span>{{ item.meta.title }}</span>
 			</template>
 			<SubMenu :menus="item.children" />
 		</el-sub-menu>
 		<el-menu-item v-else :key="item.path" :index="item.path">
-			<i v-if="item.meta.icon" class="iconfont menu-icon" :class="[item.meta.icon]"></i>
+			<SvgIcon v-if="item.meta.icon" :icon="item.meta.icon" class="menu-icon" />
 			<span>{{ item.meta.title }}</span>
 		</el-menu-item>
 	</template>
@@ -16,9 +16,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import SvgIcon from '/@/components/svgIcon/index.vue';
 
 export default defineComponent({
 	name: 'SubMenu',
+	components: {
+		SvgIcon,
+	},
 	props: {
 		menus: {
 			type: Array,

@@ -20,13 +20,25 @@ export const dynamicRoutes: RouteRecordRaw[] = [
 				component: () => import('/@/views/home/index.vue'),
 			},
 			{
-				path: '/care',
-				name: 'care',
+				path: '/extendComponent',
+				name: 'extendComponent',
 				meta: {
-					title: '人员',
-					icon: 'icon-home',
+					title: '扩展组件',
+					icon: 'icon-gongnengdingyi',
 				},
-				component: () => import('/@/views/home/index.vue'),
+				component: () => import('/@/layout/routerView/parent.vue'),
+				redirect: '/extendComponent/noticeBar',
+				children: [
+					{
+						path: '/extendComponent/noticeBar',
+						name: 'extendComponentNoticeBar',
+						meta: {
+							title: '滚动通知',
+							icon: 'icon-tongzhi',
+						},
+						component: () => import('/@/views/extendComponent/noticeBar.vue'),
+					},
+				],
 			},
 		],
 	},

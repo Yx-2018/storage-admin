@@ -3,22 +3,21 @@
 		<el-form-item prop="userName">
 			<el-input type="text" placeholder="用户名 admin" v-model="form.userName" clearable autocomplete="off">
 				<template #prefix>
-					<el-icon class="el-input__icon"><ElIconUser /></el-icon>
+					<SvgIcon icon="ElIconUser" class="el-input__icon" />
 				</template>
 			</el-input>
 		</el-form-item>
 		<el-form-item prop="password">
 			<el-input :type="isShowPassword ? 'text' : 'password'" placeholder="密码：123456" v-model="form.password" autocomplete="off">
 				<template #prefix>
-					<el-icon class="el-input__icon"><ElIconUnlock /></el-icon>
+					<SvgIcon icon="ElIconUnlock" class="el-input__icon" />
 				</template>
 				<template #suffix>
-					<i
-						class="iconfont el-input__icon login-content-password"
-						:class="isShowPassword ? 'icon-yincang' : 'icon-xianshi'"
+					<SvgIcon
+						:icon="isShowPassword ? 'icon-yincang' : 'icon-xianshi'"
+						class="el-input__icon login-content-password"
 						@click="isShowPassword = !isShowPassword"
-					>
-					</i>
+					/>
 				</template>
 			</el-input>
 		</el-form-item>
@@ -27,7 +26,7 @@
 				<el-col :span="16">
 					<el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="form.code" clearable autocomplete="off">
 						<template #prefix>
-							<el-icon class="el-input__icon"><ElIconPosition /></el-icon>
+							<SvgIcon icon="ElIconPosition" class="el-input__icon" />
 						</template>
 					</el-input>
 				</el-col>
@@ -53,8 +52,12 @@ import { STORAGE_ADMIN_TOKEN } from '/@/config';
 import { Local } from '/@/utils/storage';
 import { useStore } from '/@/store';
 import { useRouter } from 'vue-router';
+import SvgIcon from '/@/components/svgIcon/index.vue';
 export default defineComponent({
 	name: 'Account',
+	components: {
+		SvgIcon,
+	},
 	setup() {
 		const formRef = ref();
 		const store = useStore();

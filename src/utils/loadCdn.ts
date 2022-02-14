@@ -1,4 +1,4 @@
-const iconfontCdn: string[] = ['//at.alicdn.com/t/font_3138901_no1z81kj34g.css'];
+const iconfontCdn: string[] = ['//at.alicdn.com/t/font_3138901_2yzgtq2vb7a.css'];
 
 export function setIconfontCdn() {
 	if (!iconfontCdn.length) return;

@@ -1,5 +1,4 @@
-/* 初始化样式
-------------------------------- */
+/* 初始化样式 */
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +25,9 @@ body,
 
 /* 内外边距全局设置 */
 @for $i from 1 through 30 {
+  .mg#{$i} {
+    margin: #{$i}px !important;
+  }
   .mt#{$i} {
     margin-top: #{$i}px !important;
   }
@@ -37,6 +39,9 @@ body,
   }
   .ml#{$i} {
     margin-left: #{$i}px !important;
+  }
+  .pd#{$i} {
+    padding: #{$i}px !important;
   }
   .pt#{$i} {
      padding-top: #{$i}px !important;
@@ -50,4 +55,30 @@ body,
   .pl#{$i} {
     padding-left: #{$i}px !important;
   }
+}
+
+/* flex快捷布局 */
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-v-center {
+  display: flex;
+  align-items: center;
+}
+.flex-h-center {
+  display: flex;
+  justify-content: center;
+}
+.flex-vh-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 去除行高 */
+.lh-none {
+  line-height: 0;
 }

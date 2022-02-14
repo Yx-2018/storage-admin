@@ -4,7 +4,7 @@
 		<el-dropdown @command="handleCommandChange">
 			<div class="layout-user-dropdown">
 				<span class="mr5">{{ userInfo.name }}</span>
-				<el-icon><ElIconArrowDown /></el-icon>
+				<SvgIcon icon="ElIconArrowDown" />
 			</div>
 			<template #dropdown>
 				<el-dropdown-menu class="layout-user-dropdown-menu">
@@ -22,9 +22,13 @@ import { computed, resolveComponent } from 'vue';
 import { useStore } from '/@/store';
 import { Local } from '/@/utils/storage';
 import { useRouter } from 'vue-router';
+import SvgIcon from '/@/components/svgIcon/index.vue';
 
 export default {
 	name: 'User',
+	components: {
+		SvgIcon,
+	},
 	setup() {
 		const store = useStore();
 		const router = useRouter();

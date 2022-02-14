@@ -1,9 +1,6 @@
 <template>
 	<div class="layout-breadcrumb">
-		<el-icon class="layout-breadcrumb-icon" @click="handleIconClick">
-			<ElIconFold v-if="isCollapse" />
-			<ElIconExpand v-else />
-		</el-icon>
+		<SvgIcon :icon="isCollapse ? 'ElIconExpand' : 'ElIconFold'" class="layout-breadcrumb-icon" @click="handleIconClick" />
 		<el-breadcrumb>
 			<transition-group name="breadcrumb" mode="out-in">
 				<el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.path">
@@ -19,9 +16,13 @@
 import { useRoute, useRouter } from 'vue-router';
 import { computed, defineComponent } from 'vue';
 import { useStore } from '/@/store';
+import SvgIcon from '/@/components/svgIcon/index.vue';
 
 export default defineComponent({
 	name: 'Breadcrumb',
+	components: {
+		SvgIcon,
+	},
 	setup() {
 		const route = useRoute();
 		const router = useRouter();

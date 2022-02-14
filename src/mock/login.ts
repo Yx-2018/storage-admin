@@ -54,12 +54,23 @@ export default [
 								},
 							},
 							{
-								path: '/care',
-								name: 'care',
+								path: '/extendComponent',
+								name: 'extendComponent',
 								meta: {
-									title: '人员',
+									title: '扩展组件',
 									icon: 'icon-home',
 								},
+								redirect: '/extendComponent/noticeBar',
+								children: [
+									{
+										path: '/extendComponent/noticeBar',
+										name: 'extendComponentNoticeBar',
+										meta: {
+											title: '滚动通知',
+											icon: 'icon-home',
+										},
+									},
+								],
 							},
 						],
 					},
