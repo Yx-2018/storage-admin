@@ -23,6 +23,21 @@ export default defineConfig({
 				charset: false,
 			},
 		},
+		// 解决charset打包警告问题
+		postcss: {
+			plugins: [
+				{
+					postcssPlugin: 'internal:charset-removal',
+					AtRule: {
+						charset: (atRule) => {
+							if (atRule.name === 'charset') {
+								atRule.remove();
+							}
+						},
+					},
+				},
+			],
+		},
 	},
 	root: process.cwd(),
 	resolve: { alias },
