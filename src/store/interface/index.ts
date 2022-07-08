@@ -13,7 +13,12 @@ export interface LayoutState {
 	isCollapse: boolean;
 }
 
+export interface SettingState {
+	language: string;
+}
+
 export interface RootState {
 	userInfoModule: UserInfoState;
 	layoutModule: LayoutState;
+	settingModule: SettingState;
 }

@@ -1,6 +1,7 @@
 <template>
 	<div class="layout-user">
-		<el-avatar class="mr5" :icon="ElIconUserFilled" :src="userInfo.photo" :size="25"></el-avatar>
+		<LangSelect />
+		<el-avatar class="ml10 mr5" :icon="ElIconUserFilled" :src="userInfo.photo" :size="25"></el-avatar>
 		<el-dropdown @command="handleCommandChange">
 			<div class="layout-user-dropdown">
 				<span class="mr5">{{ userInfo.name }}</span>
@@ -23,11 +24,13 @@ import { useStore } from '/@/store';
 import { Local } from '/@/utils/storage';
 import { useRouter } from 'vue-router';
 import SvgIcon from '/@/components/svgIcon/index.vue';
+import LangSelect from '/@/components/langSelect/index.vue';
 
 export default {
 	name: 'User',
 	components: {
 		SvgIcon,
+		LangSelect,
 	},
 	setup() {
 		const store = useStore();
